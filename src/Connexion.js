@@ -1,4 +1,6 @@
 import React from 'react';
+import joel from './images/joel.png';
+import abby from './images/abby.png';
 import {
     BrowserRouter as Router,
     Route,
@@ -9,6 +11,12 @@ import {
       return(
 
           <>
+          <div className="joeldiv">
+          <img src={joel} alt="joel" id="imgjoel"></img>
+          </div>
+          <div className="abbydiv">
+              <img src={abby} alt="abby" id="imgabby"></img>
+          </div>
           <h2 style={{paddingTop: "35px"}}>Connectez-vous</h2>
           <div className="login-box">
               <form>

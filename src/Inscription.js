@@ -1,4 +1,6 @@
 import React from 'react';
+import claqueur from './images/claqueur.png';
+import ellie from './images/ellie.png';
 import {
     BrowserRouter as Router,
     Route,
@@ -9,6 +11,12 @@ import {
       return(
 
         <>
+        <div className="claqueurdiv">
+        <img src={claqueur} alt="claqueur" id="imgclaqueur"></img>
+        </div>
+        <div className="elliediv">
+        <img src={ellie} alt="ellie" id="imgellie"></img>
+        </div>
         <h2 style={{paddingTop: "35px"}}>Inscrivez-vous gratuitement</h2>
         <div className="login-box">
             <form>
