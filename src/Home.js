@@ -1,7 +1,5 @@
 import React from 'react';
 import logo from './images/logo.jpg';
-import  start  from './Music';
-import clickSoundEffect from './sounds/littleclick.mp3';
 import {
   BrowserRouter as Router,
   Route,
@@ -10,7 +8,10 @@ import {
 
 
 
+
+
 function Home() {
+
   return(
 
             <>
@@ -28,7 +29,7 @@ function Home() {
           marginBottom: "100px"
       }}>
       <Link to="/Questions"><button variant="primary" className="menuBtn fade-in">Commencer</button></Link>
-      <Link to="/Scores"><button variant="primary"  className="menuBtn fade-in">Voir les scores</button></Link>
+      <Link to="/Scores"><button variant="primary"  className="menuBtn fade-in">Voir les scores </button></Link>
       <Link to="/Rules"><button variant="primary" className="menuBtn fade-in">Voir les règles</button></Link>
       </div>
       </>

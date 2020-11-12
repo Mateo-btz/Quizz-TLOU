@@ -20,6 +20,7 @@ import {
 
 
 function App()  {
+
   
   return (
     
@@ -27,7 +28,6 @@ function App()  {
 <div className="App">
 <Music />
 <Nav />
-
 {/* <Route render={({location}) => (
 <TransitionGroup>
 <CSSTransition
