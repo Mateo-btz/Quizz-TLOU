@@ -71,7 +71,7 @@ function Scores() {
                 </tr>
             </tbody>
         </table>  
-        <Link to="/"><button style={{marginTop: "270px"}} variant="primary" className="Btn">Retour</button></Link>
+        <Link to="/"><button style={{marginTop: "340px"}} variant="primary" className="Btn">Retour</button></Link>
     </div>
       )
 }

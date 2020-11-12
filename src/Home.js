@@ -14,11 +14,11 @@ function Home() {
   return(
 
             <>
-            <div> 
+            <header> 
             <img src={logo} alt="logo" id="logo" className="fade-in"></img>
             <h1 className="hometitle fade-in text-center">LE QUIZZ</h1>
-            <h2 className="fade-in text-center">Testez vos connaissances sur le jeu</h2>
-          </div>
+            <h2 className="hometitle2 fade-in text-center">Testez vos connaissances sur le jeu</h2>
+          </header>
           
           <div
           style=

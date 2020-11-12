@@ -11,8 +11,8 @@ import {
   function Rules() {
       return(
         <>
-        <div>
-        <h2 className="rules">Vous devez répondre à 20 questions, essayez d'atteindre le meilleur score.
+        <div className="rules">
+        <h2 className="rulestext">Vous devez répondre à 20 questions, essayez d'atteindre le meilleur score.
             Il n'y a pas de temps imparti, bonne chance !
         </h2>
 

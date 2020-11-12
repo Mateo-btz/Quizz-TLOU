@@ -61,12 +61,11 @@ export default function Questions() {
 
   const [score, setScore] = useState(0);
 
+
   const AnswerButtonClick = (correct) => {
     if(correct===true){
-      alert("Bonne réponse !");
       setScore(score + 1);
-    }
-      
+    }      
     
     const nextQuestion = currentQuestion + 1;
       if(nextQuestion < questions.length) {
@@ -92,7 +91,7 @@ export default function Questions() {
   </div>
   <div className="answer-box">
   {questions[currentQuestion].answerOptions.map((answerOption) =>(
-  <button className="answerbtn" onClick={() => AnswerButtonClick(answerOption.correct)}>{answerOption.text}</button>
+  <button className="answerbtn" id="answerbtn" onClick={() => AnswerButtonClick(answerOption.correct)}>{answerOption.text}</button>
   ))}
       
   </div>
@@ -101,4 +100,4 @@ export default function Questions() {
 </div>
   )
  
-}
+} 

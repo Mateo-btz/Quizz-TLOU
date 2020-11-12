@@ -2,9 +2,9 @@
 @font-face {font-family: "Press Gothic"; src: url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.eot"); src: url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.woff") format("woff"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.svg#Press Gothic") format("svg"); }
 
 /* TRANSITION GROUP */
-
+/*
 .page {
-  position: absolute;
+  position: relative;
   top: 100px;
   left: 0;
   right: 0;
@@ -31,6 +31,21 @@
   transition: opacity 150ms linear;
 }
 /* FONT-STYLE */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --hue-neutral: white;
+  --hue-wrong: red;
+  --hue-correct: green;
+}
+
+.answerbtn.correct {
+  background-color: var(--hue-correct);
+}
+
+.answerbtn.wrong {
+  background-color: var(--hue-wrong);
+}
 
 body {
   margin: 0;
@@ -48,6 +63,7 @@ code {
 
 h1, h2, div {
   color: white;
+  text-align: center;
 }
 
 /* LOGO */
@@ -57,6 +73,12 @@ h1, h2, div {
   margin-left: auto;
   margin-right: auto;
   width: 40%;
+}
+@media(min-width: 0px) and (max-width: 480px) {
+  #logo {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* AUDIO ET VIDEOS */
@@ -109,17 +131,20 @@ video#bgvid {
   letter-spacing: 2px;
 }
 
-.rules {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  top: 200px;
+@media (max-width: 480px) {
+  .hometitle {
+    font-size: 55px;
+  }
 }
+@media (max-width: 480px) {
+  .hometitle2 {
+    font-size: 25px;
+  }
+}
+
 /* BOUTONS */
 
 .answerbtn {
-  width: 40%;
   margin: 15px;
   margin-left: auto;
   margin-right: auto;
@@ -154,6 +179,17 @@ video#bgvid {
   background-color: white;
 }
 
+@media (max-width: 480px) {
+  .menuBtn {
+    display: block;
+    position: relative;
+    float: none !important;
+    left: auto;
+    position: relative;
+
+  }
+}
+
 .Btn {
   background-color: transparent;
   border: 1px white solid;
@@ -181,12 +217,47 @@ video#bgvid {
   color: white;
   font-size: 20px;
   position: relative;
-  top: 50%;
+  top: 100%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   margin-top: 55px;
 
+}
+.loginBtn {
+  display: inline-flex;
+  float: left;
+  width: 150px;
+  margin: 10px;
+  background-color: transparent;
+  color: white;
+  border: 1px white solid;
+  margin-top: 8px;
+  min-height: 30px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+.loginBtn:hover {
+  color: black;
+  background-color: white;
+}
+
+
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+#mute {
+  display: flex;
+  float: left;
+  margin-left: 45px;
+  margin-top: 15px;
+  margin: 10px;
+  position: fixed;
 }
 
 /* BOX ET CONTAINERS */
@@ -206,6 +277,43 @@ video#bgvid {
   height: 150px;
 }
 
+.login-box {
+
+  position: relative;
+  top: 200px;
+
+}
+
+.login-box input {
+  height: 45px;
+  width: 275px;
+  margin: 5px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(224, 218, 218, 0.103);
+  border-top: none;
+  border-right: none;
+  padding-left: 5px;
+  
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  margin-left: 50px;
+}
+
+.rules {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rulestext {
+  text-align: center;
+  padding-top: 30%;
+
+}
+
 /* TABLES */
 
 td {
@@ -220,6 +328,16 @@ table, th {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  top: 20px;
 }
+
+.signin {
+  border: 1px white solid;
+}
+
+
+
+
 
 
