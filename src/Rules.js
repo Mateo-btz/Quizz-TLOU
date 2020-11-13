@@ -1,12 +1,6 @@
 import React from 'react';
-import Home from './Home';
 import play from './Music';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
   function Rules() {
       return(

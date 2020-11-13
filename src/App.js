@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Music from './Music';
 import Rules from './Rules';
 import Scores from './Scores';
@@ -7,14 +7,7 @@ import Questions from './Questions';
 import Connexion from './Connexion';
 import Inscription from './Inscription';
 import Nav from './Nav';
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import {Route, Switch, Redirect } from "react-router-dom";
 
 
 

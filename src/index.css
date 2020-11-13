@@ -39,6 +39,15 @@
   --hue-correct: green;
 }
 
+.error {
+  color: red;
+}
+
+.disabled, .disabled a:hover {
+   background-color: grey!important;
+   color: white!important;
+}
+
 .answerbtn.correct {
   background-color: var(--hue-correct);
 }
@@ -75,20 +84,8 @@ h1, h2, div {
   width: 40%;
 }
 
-.claqueurdiv {
 
- display: block;
- position: relative;
- right: 800px;
- top: 160px;
-
-}
-#imgclaqueur {
-  position: absolute;
-  height: 360px;
-}
-
-.elliediv {
+/* .elliediv {
 
   display: block;
   position: relative;
@@ -115,21 +112,8 @@ h1, h2, div {
 
 #imgjoel {
   position: absolute;
-}
+} */
 
-.abbydiv {
-
-  display: block;
-  position: relative;
-  top: 175px;
-  left: 80px;
-  
-}
-
-#imgabby {
-
-position: absolute;
-}
 
 
 @media(min-width: 0px) and (max-width: 480px) {
@@ -338,12 +322,13 @@ video#bgvid {
 .login-box {
 
   position: relative;
-  top: 200px;
+  top: 80px;
+  border-right: 1px solid rgba(224, 218, 218, 0.103);
 
 }
 
 .login-box input {
-  height: 45px;
+  height: 50px;
   width: 275px;
   margin: 5px;
   background: transparent;
@@ -351,7 +336,10 @@ video#bgvid {
   border: 1px solid rgba(224, 218, 218, 0.103);
   border-top: none;
   border-right: none;
+  border-left: none;
   padding-left: 5px;
+  position: relative;
+  top: 40px;
   
 }
 
@@ -376,6 +364,7 @@ nav {
 
 td {
   color: white;
+
 }
 
 table, th {
@@ -383,7 +372,7 @@ table, th {
 }
 
 .table {
-  width: 50%;
+  width: 55%;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -394,7 +383,30 @@ table, th {
   border: 1px white solid;
 }
 
+form {
+  height: 225px;
+  width: 550px;
+  
+}
 
+.container {
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#imgjoel {
+  position: absolute;
+  height: 450px;
+  right: -180px;
+  top: -50px;
+}
+
+#imgellie {
+  position: absolute;
+  height: 400px;
+  right: 140px;
+}
 
 
 

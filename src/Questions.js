@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from "react-router-dom";
+import { Col, Container, Row } from 'react-bootstrap';
+import claqueur from './images/claqueur.png';
+import { Link } from "react-router-dom";
 
 export default function Questions() {
   const questions = [
@@ -80,9 +78,27 @@ export default function Questions() {
             
 <div className="container">
   {showScore ? (
-    <div className='score-box'>Vous avez {score} bonne réponse sur {questions.length}
-    <Link to="/"><button className="goHomeBtn">Menu principal</button></Link>
-    </div>
+    <>
+    <h1>Vous avez {score} bonne réponse sur {questions.length}</h1>
+    <Container>
+      <Row>
+        <Col>
+        <div className='score-box'>
+          <p>Voulez-vous enregistrer votre score ?</p>
+          <form>
+          <input type="text" placeholder="Votre pseudo"></input>
+        <Link to="/"><button className="goHomeBtn">Menu principal</button></Link>
+        </form>
+        </div>
+        </Col>
+        <Col>
+        <div className="claqueurdiv">
+        <img src={claqueur} alt="claqueur" id="imgclaqueur"></img>
+        </div>
+        </Col>
+      </Row>
+    </Container>
+    </>
   ) : (
   <>
   <div className="question-box">

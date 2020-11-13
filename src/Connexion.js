@@ -1,32 +1,72 @@
-import React from 'react';
-import joel from './images/joel.png';
-import abby from './images/abby.png';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-  } from "react-router-dom";
+import React, {useState, useEffect, useContext} from 'react';
+import ellie from './images/ellie.png';
+import { FirebaseContext } from './Firebase';
+import { Col, Container, Row } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
-  function Connexion() {
+  function Connexion(props) {
+
+   const firebase = useContext(FirebaseContext)
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [btn, setBtn] = useState(false);
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+
+      if (password.length > 5 && email !== '') {
+        setBtn(true)
+      } else if (btn) {
+         setBtn(false)
+      }
+
+    }, [password, email, btn])
+
+    const handleSubmit = e => {
+      e.preventDefault();
+
+      firebase.loginUser(email, password)
+      .then(user => {
+        console.log(user);
+        setEmail('');
+        setPassword('');
+           props.history.push("/");
+          })
+        .catch(error => {
+          setError(error);
+          setEmail('');
+          setPassword('');
+      })
+      
+    }
+
+
+
       return(
-
           <>
-          <div className="joeldiv">
-          <img src={joel} alt="joel" id="imgjoel"></img>
-          </div>
-          <div className="abbydiv">
-              <img src={abby} alt="abby" id="imgabby"></img>
-          </div>
           <h2 style={{paddingTop: "35px"}}>Connectez-vous</h2>
-          <div className="login-box">
-              <form>
-              <input type="text" placeholder="Votre pseudo"></input>
+          <Container>
+            <Row>
+              <Col>
+              {error !== '' && <span className="error">{error.message}</span>}
+              <div className="login-box">
+              <form onSubmit={handleSubmit}>
+              <input onChange={e => setEmail(e.target.value)}  value={email} type="text" placeholder="Email" required></input>
               <br></br>
-              <input type="password" placeholder="Votre mot de passe"></input>
+              <input onChange={e => setPassword(e.target.value)} value={password} type="password"  placeholder="mot de passe" required></input>
+              {btn ? <button className="Btn" type="submit" style={{marginTop: "210px", width: "250px"}}>Connexionvrai</button> : <button className="Btn disabled" style={{marginTop: "100px", width: "250px"}} disabled>Connexion</button>}
               </form>
+              </div>
+              </Col>
+              <Col>
+              <div className="joeldiv">
+          <img src={ellie} alt="ellie" id="imgellie"></img>
           </div>
-          <button className="Btn" style={{marginTop: "70px"}}>Envoyer</button>
-          <Link to="/"><button className="Btn" style={{marginTop: "130px"}}>Retour au menu</button></Link> 
+            </Col>
+          </Row>
+          </Container>
+          <Link to="/"><button className="Btn" style={{marginTop: "262px", width: "250px"}}>Retour au menu</button></Link> 
           </>
       )
   }

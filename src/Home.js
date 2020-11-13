@@ -1,10 +1,6 @@
 import React from 'react';
 import logo from './images/logo.jpg';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 
