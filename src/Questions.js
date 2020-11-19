@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { Component, useState } from 'react';
 import claqueur from './images/claqueur.png';
 import { Link } from "react-router-dom";
 
-export default function Questions() {
-  const questions = [
+export default function Questions(props) {
+   const questions = [
     {
       question: "Quel age a Ellie la première fois qu'elle rencontre Joel ?",
       answerOptions: [
@@ -53,6 +52,8 @@ export default function Questions() {
     },
   ]
 
+  // const { pseudo }  = loginData.pseudo;
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [showScore, setShowScore] = useState(false);
@@ -60,12 +61,26 @@ export default function Questions() {
   const [score, setScore] = useState(0);
 
 
+
+   const saveHighScore = () => {
+   var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+   highScores.push(score);
+   localStorage.setItem("highScores", JSON.stringify(highScores));
+   console.log(highScores);
+   }
+
+
+
   const AnswerButtonClick = (correct) => {
     if(correct===true){
       setScore(score + 1);
-    }      
-    
-    const nextQuestion = currentQuestion + 1;
+      alert('Bonne réponse !');
+      } else {
+        alert('Mauvaise réponse !');
+      }
+
+
+  const nextQuestion = currentQuestion + 1;
       if(nextQuestion < questions.length) {
         setCurrentQuestion(nextQuestion);
       } else {
@@ -73,32 +88,25 @@ export default function Questions() {
       }
   }
   
-
     return(
             
 <div className="container">
+
   {showScore ? (
     <>
-    <h1>Vous avez {score} bonne réponse sur {questions.length}</h1>
-    <Container>
-      <Row>
-        <Col>
         <div className='score-box'>
+        <h1>Vous avez {score} bonne réponse sur {questions.length}</h1>
           <p>Voulez-vous enregistrer votre score ?</p>
           <form>
-          <input type="text" placeholder="Votre pseudo"></input>
-        <Link to="/"><button className="goHomeBtn">Menu principal</button></Link>
+          <button className="Btn" type="submit" onClick={() => saveHighScore(score)}>Sauvegarder</button>
         </form>
         </div>
-        </Col>
-        <Col>
+
         <div className="claqueurdiv">
         <img src={claqueur} alt="claqueur" id="imgclaqueur"></img>
         </div>
-        </Col>
-      </Row>
-    </Container>
     </>
+
   ) : (
   <>
   <div className="question-box">
@@ -109,10 +117,9 @@ export default function Questions() {
   {questions[currentQuestion].answerOptions.map((answerOption) =>(
   <button className="answerbtn" id="answerbtn" onClick={() => AnswerButtonClick(answerOption.correct)}>{answerOption.text}</button>
   ))}
-      
   </div>
   </>              
-  )};
+  )}
 </div>
   )
  

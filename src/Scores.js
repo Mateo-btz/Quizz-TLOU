@@ -2,6 +2,16 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 function Scores() {
+
+    // const highScoresList = document.getElementById('highScoresList')
+    // const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    // console.log(highScores);
+
+    // highScoresList.innerHTML = highScores
+    // .map(score => { )}
+        
+    
+    
     return(
 
         <div className="table">

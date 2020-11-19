@@ -15,6 +15,7 @@
     border-radius: 100px;
     position: relative;
     transition: background-color .2s;
+    transform: scale(0.7)!important
   }
   
   .react-switch-label .react-switch-button {
@@ -38,3 +39,45 @@
   .react-switch-label:active .react-switch-button {
     width: 60px;
   }
+
+  /* LOADER */
+
+  .loader {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+      
+    margin: auto;
+    border: 10px solid white;
+    border-radius: 50%;
+    border-top: 10px solid grey;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+
+  .loaderText {
+    text-align: center;
+    color: white;
+  }
+
+  @-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

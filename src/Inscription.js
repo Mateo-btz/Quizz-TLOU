@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { FirebaseContext } from './Firebase';
 import { Link } from "react-router-dom";
 
-  const Inscription = () => {
+  const Inscription = (props) => {
 
    
        const firebase = useContext(FirebaseContext) 
@@ -27,10 +27,17 @@ import { Link } from "react-router-dom";
 
        const handleSubmit = e => {
          e.preventDefault();
-         const { email, password } = loginData;
+         const { email, password, pseudo } = loginData;
          firebase.signupUser(email, password)
-         .then(user => {
-             setLoginData({...data})
+         .then(authUser => {
+            return firebase.user(authUser.user.uid).set({
+              pseudo,
+              email, 
+            })
+         })
+         .then(() => {
+             setLoginData({...data});
+             props.history.push("/Profil");
          })
          .catch(error => {
              setError(error)

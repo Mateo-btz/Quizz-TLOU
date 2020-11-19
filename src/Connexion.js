@@ -31,7 +31,7 @@ import {Link} from "react-router-dom";
         console.log(user);
         setEmail('');
         setPassword('');
-           props.history.push("/");
+           props.history.push("/Profil");
           })
         .catch(error => {
           setError(error);
@@ -55,7 +55,7 @@ import {Link} from "react-router-dom";
               <input onChange={e => setEmail(e.target.value)}  value={email} type="text" placeholder="Email" required></input>
               <br></br>
               <input onChange={e => setPassword(e.target.value)} value={password} type="password"  placeholder="mot de passe" required></input>
-              {btn ? <button className="Btn" type="submit" style={{marginTop: "210px", width: "250px"}}>Connexionvrai</button> : <button className="Btn disabled" style={{marginTop: "100px", width: "250px"}} disabled>Connexion</button>}
+              {btn ? <button className="Btn" type="submit" style={{marginTop: "100px", width: "250px"}}>Connexion</button> : <button className="Btn disabled" style={{marginTop: "100px", width: "250px"}} disabled>Connexion</button>}
               </form>
               </div>
               </Col>
