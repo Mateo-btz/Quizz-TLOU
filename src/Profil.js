@@ -2,6 +2,7 @@ import React, {useState, Fragment, useContext, useEffect} from 'react';
 import Firebase, { FirebaseContext } from './Firebase';
 import Logout from './Logout';
 import Loader from './Loader';
+import storage from './Firebase';
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from 'react-bootstrap';
 import "antd/dist/antd.css";
@@ -43,6 +44,25 @@ import henryAvatar from './images/Avatars/henry-face.jpg';
      const handleImageChange = (profileImage) => {
         setProfileImage(profileImage)
         }
+
+    const handleUpload = () => {
+        const uploadTask = storage.ref(`Avatars/${profileImage}`).put(profileImage);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {},
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                .ref("profileImage")
+                .getDownloadURL()
+                .then(url => {
+                    console.log(url)
+                });
+            }
+        );
+    };
 
     
     useEffect(() => {
@@ -91,6 +111,7 @@ import henryAvatar from './images/Avatars/henry-face.jpg';
     <ProfilePicChange handleImageChange={handleImageChange} pic1={ellieAvatar} pic2={joelAvatar} pic3={tommyAvatar} pic4={abbyAvatar} pic5={jesseAvatar}
         pic6={levAvatar} pic7={billAvatar} pic8={dinaAvatar} pic9={samAvatar} pic10={henryAvatar} pic11={tessAvatar} pic12={davidAvatar}
     />
+    <button onClick={handleUpload}>Enregistrer</button>
     <h2 style={{color: "white"}}>Meilleur score actuel : 10</h2>
     
     </Container>
