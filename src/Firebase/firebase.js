@@ -18,7 +18,6 @@ class Firebase {
         app.initializeApp(config)
         this.auth = app.auth();
         this.db = app.firestore();
-        this.firebase.storage();
     }
 
     //inscription
@@ -33,6 +32,7 @@ class Firebase {
     signoutUser = () => this.auth.signOut();
 
     user = uid => this.db.doc(`users/${uid}`);
+
 
 
 }
