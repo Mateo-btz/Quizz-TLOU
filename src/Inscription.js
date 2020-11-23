@@ -58,8 +58,8 @@ import { Link } from "react-router-dom";
 
         <>
 
-        <h2 style={{paddingTop: "35px"}}>Inscrivez-vous gratuitement</h2>
-        <Container>
+        <h2 style={{paddingTop: "100px"}}>Inscrivez-vous gratuitement</h2>
+        <Container id="login-container">
           <Row>
             <Col>
             {errorMsg}
@@ -73,6 +73,7 @@ import { Link } from "react-router-dom";
             <br></br>
             <input onChange={handleChange} value={confirmPassword} type="password" id="confirmPassword" placeholder="Confirmation mot de passe" required></input>
             {btn} 
+            <Link to="/"><button className="Btn" id="mobile-goHomeBtn" style={{marginTop: "280px", width: "250px"}}>Retour au menu</button></Link>
             </form>
         </div>
         </Col>
@@ -83,7 +84,7 @@ import { Link } from "react-router-dom";
         </Col>
         </Row>
         </Container>
-        <Link to="/"><button className="Btn" style={{marginTop: "270px", width: "250px"}}>Retour au menu</button></Link>
+        <Link to="/"><button className="Btn" id="goHomeBtn" style={{marginTop: "270px", width: "250px"}}>Retour au menu</button></Link>
         </>
 
       )

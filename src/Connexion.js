@@ -45,8 +45,8 @@ import {Link} from "react-router-dom";
 
       return(
           <>
-          <h2 style={{paddingTop: "35px"}}>Connectez-vous</h2>
-          <Container>
+          <h2 style={{paddingTop: "100px"}}>Connectez-vous</h2>
+          <Container id="login-container">
             <Row>
               <Col>
               {error !== '' && <span className="error">{error.message}</span>}
@@ -56,6 +56,7 @@ import {Link} from "react-router-dom";
               <br></br>
               <input onChange={e => setPassword(e.target.value)} value={password} type="password"  placeholder="mot de passe" required></input>
               {btn ? <button className="Btn" type="submit" style={{marginTop: "100px", width: "250px"}}>Connexion</button> : <button className="Btn disabled" style={{marginTop: "100px", width: "250px"}} disabled>Connexion</button>}
+              <Link to="/"><button className="Btn" id="mobile-goHomeBtn" style={{marginTop: "160px", width: "250px"}}>Retour au menu</button></Link>
               </form>
               </div>
               </Col>
@@ -66,7 +67,7 @@ import {Link} from "react-router-dom";
             </Col>
           </Row>
           </Container>
-          <Link to="/"><button className="Btn" style={{marginTop: "262px", width: "250px"}}>Retour au menu</button></Link> 
+          <Link to="/"><button className="Btn" id="goHomeBtn" style={{marginTop: "262px", width: "250px"}}>Retour au menu</button></Link> 
           </>
       )
   }

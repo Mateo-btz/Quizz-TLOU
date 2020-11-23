@@ -15,11 +15,13 @@ const config = {
 
 class Firebase {
     constructor() {
-        app.initializeApp(config)
+        app.initializeApp(config);
         this.auth = app.auth();
         this.db = app.firestore();
-    }
+        this.storage = app.storage();
 
+    }
+    
     //inscription
     signupUser = (email,  password) =>
     this.auth.createUserWithEmailAndPassword(email, password)
@@ -34,7 +36,6 @@ class Firebase {
     user = uid => this.db.doc(`users/${uid}`);
 
 
-
 }
 
-export default Firebase;
+export default Firebase ;

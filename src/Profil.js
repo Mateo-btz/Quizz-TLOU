@@ -2,7 +2,8 @@ import React, {useState, Fragment, useContext, useEffect} from 'react';
 import Firebase, { FirebaseContext } from './Firebase';
 import Logout from './Logout';
 import Loader from './Loader';
-import storage from './Firebase';
+import app from 'firebase/app';
+import  storage  from './Firebase';
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from 'react-bootstrap';
 import "antd/dist/antd.css";
@@ -40,13 +41,20 @@ import henryAvatar from './images/Avatars/henry-face.jpg';
      const [userSession, setUserSession] = useState(null);
      const [userData, setUserData] = useState({})
      const [profileImage, setProfileImage] = useState('')
+     const [url, setUrl] = useState("");
+     var storage = app.storage();
+   
+
+
+
+
 
      const handleImageChange = (profileImage) => {
         setProfileImage(profileImage)
         }
 
     const handleUpload = () => {
-        const uploadTask = storage.ref(`Avatars/${profileImage}`).put(profileImage);
+        const uploadTask = storage.ref(`Avatars/${profileImage.name}`).put(profileImage);
         uploadTask.on(
             "state_changed",
             snapshot => {},
@@ -55,10 +63,11 @@ import henryAvatar from './images/Avatars/henry-face.jpg';
             },
             () => {
                 storage
-                .ref("profileImage")
+                .ref("Avatars")
                 .getDownloadURL()
                 .then(url => {
-                    console.log(url)
+                    console.log(url);
+                    setUrl(url)
                 });
             }
         );

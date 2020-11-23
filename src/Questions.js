@@ -1,8 +1,10 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
+import Firebase, { FirebaseContext } from './Firebase';
+import { Col, Container, Row } from 'react-bootstrap';
 import claqueur from './images/claqueur.png';
 import { Link } from "react-router-dom";
 
-export default function Questions(props) {
+export default function Questions() {
    const questions = [
     {
       question: "Quel age a Ellie la première fois qu'elle rencontre Joel ?",
@@ -52,7 +54,6 @@ export default function Questions(props) {
     },
   ]
 
-  // const { pseudo }  = loginData.pseudo;
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -60,14 +61,33 @@ export default function Questions(props) {
 
   const [score, setScore] = useState(0);
 
+  const [username, setUsername] = useState('');
+ 
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
+
+ 
+
+  
 
    const saveHighScore = () => {
-   var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-   highScores.push(score);
+
+  // username.addEventListener("keyup", () => {
+  //     saveScoreBtn.disabled = !username.value;
+  //   })
+
+   const result = {
+    score : score,
+    username : username
+  };
+
+   setUsername('')
+   highScores.push(result);
    localStorage.setItem("highScores", JSON.stringify(highScores));
+   window.location.assign('/');
    console.log(highScores);
-   }
+ 
+  }
 
 
 
@@ -98,13 +118,14 @@ export default function Questions(props) {
         <h1>Vous avez {score} bonne réponse sur {questions.length}</h1>
           <p>Voulez-vous enregistrer votre score ?</p>
           <form>
-          <button className="Btn" type="submit" onClick={() => saveHighScore(score)}>Sauvegarder</button>
+          <input type="text" onChange={(e) => setUsername(e.target.value)} name="username" id="username" value={username} className="Btn" placeholder="pseudo" required />
+          <button className="Btn" type="submit" id="saveScoreBtn" onClick={() => saveHighScore()}>Sauvegarder</button>
         </form>
         </div>
 
-        <div className="claqueurdiv">
+        {/* <div className="claqueurdiv">
         <img src={claqueur} alt="claqueur" id="imgclaqueur"></img>
-        </div>
+        </div> */}
     </>
 
   ) : (
