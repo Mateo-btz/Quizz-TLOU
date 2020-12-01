@@ -1,6 +1,7 @@
 import { Result } from 'antd';
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Alert } from 'react-bootstrap';
 
 
 function Scores() {
@@ -32,8 +33,8 @@ const titles = Object.keys(highScores[0])
                   </tr>
                   )}
               </tbody> 
+              <Link to="/"><button style={{marginTop: "400px"}} variant="primary" className="Btn">Retour</button></Link>
           </table>
-          <Link to="/"><button id="scoreHomeBtn" variant="primary" className="Btn">Retour</button></Link>
           </>
 
 

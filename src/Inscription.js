@@ -81,7 +81,7 @@ import app from 'firebase/app';
        const {email, pseudo, password, confirmPassword } = loginData;
 
       const btn = pseudo === '' || email === '' || password === '' || password !== confirmPassword
-       ? <button  className="Btn disabled" style={{marginTop: "270px", width: "250px"}} disabled>Inscription</button> : <button className="Btn" style={{marginTop: "270px", width: "250px"}}>Inscription</button>
+       ? <button  className="Btn disabled" style={{marginTop: "290px", width: "250px"}} disabled>Inscription</button> : <button className="Btn" style={{marginTop: "290px", width: "250px"}}>Inscription</button>
 
       // ERRORS
 
@@ -112,7 +112,7 @@ import app from 'firebase/app';
                     <br></br>
                     <input onChange={handleChange} value={confirmPassword} type="password" id="confirmPassword" placeholder="Confirmation mot de passe" required></input>
               {btn} 
-              <Link to="/"><button className="Btn" id="mobile-goHomeBtn" style={{marginTop: "330px", width: "240px",position: "absolute"}}>Retour au menu</button></Link>  {/* SE DISPLAY EN VERSION MOBILE*/}
+              <Link to="/"><button className="Btn" id="mobile-goHomeBtn" style={{marginTop: "350px", width: "240px",position: "absolute"}}>Retour au menu</button></Link>  {/* SE DISPLAY EN VERSION MOBILE*/}
               <br></br>
             </form>
          </div>

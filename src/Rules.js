@@ -15,9 +15,9 @@ import { Container} from 'react-bootstrap';
                                   Il n'y a pas de temps imparti, bonne chance !
         </h2>
  </ Container>
- <Container>
- <Link to="/"><button variant="primary" className="Btn" id="rulesBtn" style={{marginTop: "90px"}} onClick={play}>Retour</button></Link>
- </Container>
+ <div>
+ <Link to="/"><button variant="primary" className="Btn" id="rulesBtn" style={{marginTop: "160px", position: "absolute"}} onClick={play}>Retour</button></Link>
+ </div>
  </>
       )}
 

@@ -45,7 +45,6 @@
 }
 
 
-
 button {
   font-family: 'Segoe UI'!important;
 }
@@ -190,18 +189,16 @@ video#bgvid {
   
 }
 
-#scoreHomeBtn {
-  position: absolute;
-  top: 600px;
-}
-
 .answerbtn:hover {
   color: black;
   background-color: white;
 }
 
 @media (min-width: 500px) {
-   
+
+nav {
+  left: 0;
+}    
 #mobile-goHomeBtn {
    display: none;
 }
@@ -242,14 +239,14 @@ video#bgvid {
 
 .Btn {
   background-color: transparent;
-  border: 1px white solid;
+  border: 1px white solid!important;
   border-radius: 8px;
   height: 50px;
   width:  200px;
   color: white;
   transition: 0.4s;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -399,7 +396,8 @@ video#bgvid {
 nav {
   position: fixed;
   top: 0;
-  left: 0;
+
+
 }
 .rulestext {
   text-align: center;
@@ -450,7 +448,9 @@ table {
 /* MOBILE FIRST */
 
 @media (max-width: 500px) {
-  
+
+
+    
   #logo {
     width: 100%;
     height: auto;
@@ -502,10 +502,6 @@ table {
     padding-top: 50px;
   }
 
-  #rulesBtn {
-     margin-top: 100px;
-  }
-
   #nav-container {
     display: flex;
     justify-content: flex-start;
@@ -553,6 +549,9 @@ table {
   }
   .ant-avatar .ant-avatar-circle .ant-avatar-icon {
     float: right;
+  }
+  .login-box {
+    border-right-color: transparent;
   }
 
 
