@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import play from './Music';
 import { Link } from "react-router-dom";
 import { Container} from 'react-bootstrap';
@@ -6,14 +6,20 @@ import { Container} from 'react-bootstrap';
 
   function Rules() {
       return(
+        <>
         <Container id="rules-container">
-        <h2 className="rulestext">Vous devez répondre à 20 questions, essayez d'atteindre le meilleur score.
+        <h2 style={{paddingTop: "130px"}}>Bienvenue, Survivant.</h2>  
+        <h2 className="rulestext">
+                                  A quel point connaît-tu The last of us ? Nous allons vite le savoir.<br></br>
+                                  Il y a 20 questions, tente d'atteindre le meilleur score et ainsi figurer au classement.
                                   Il n'y a pas de temps imparti, bonne chance !
         </h2>
-        <Link to="/"><button style={{marginTop: "50px"}} variant="primary" className="Btn" onClick={play}>Retour</button></Link> 
  </ Container>
-      )
-  }
+ <Container>
+ <Link to="/"><button variant="primary" className="Btn" id="rulesBtn" style={{marginTop: "90px"}} onClick={play}>Retour</button></Link>
+ </Container>
+ </>
+      )}
 
 
 export default Rules;

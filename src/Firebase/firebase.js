@@ -21,6 +21,7 @@ class Firebase {
         this.storage = app.storage();
 
     }
+
     
     //inscription
     signupUser = (email,  password) =>

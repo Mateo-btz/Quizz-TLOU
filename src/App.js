@@ -32,13 +32,13 @@ function App()  {
 
 > */}
 <Switch>
-<Route exact path="/" component={Home}></Route>
-<Route exact path="/Questions" component={Questions}></Route>
-<Route exact path="/Connexion" component={Connexion}></Route>
-<Route exact path="/Inscription" component={Inscription}></Route>
-<Route exact path="/Scores" component={Scores}></Route>
-<Route exact path="/Rules" component={Rules}></Route>
-<Route exact path="/Profil" component={Profil}></Route>
+  <Route exact path="/" component={Home}></Route>
+  <Route exact path="/Questions" component={Questions}></Route>
+  <Route exact path="/Connexion" component={Connexion}></Route>
+  <Route exact path="/Inscription" component={Inscription}></Route>
+  <Route exact path="/Scores" component={Scores}></Route>
+  <Route exact path="/Rules" component={Rules}></Route>
+  <Route exact path="/Profil" component={Profil}></Route>
 <Redirect from="/" to="/Home"/>
 </Switch>
 {/* </CSSTransition>

@@ -41,6 +41,7 @@ class ProfilePicChange extends Component {
         const imageMapper = this.state.imagesArray.map((image, index) => {
             return(
                 <img src={image}
+                className="avatars"
                 alt="img"
                 onClick={() => this.props.handleImageChange(image)}
                 height="48px"
@@ -55,6 +56,7 @@ class ProfilePicChange extends Component {
         </Button>
         <Modal
           okType="danger"
+          color="black"
           title="Choisissez un avatar parmi les personnage ci-dessous"
           visible={this.state.visible}
           onOk={this.handleOk}

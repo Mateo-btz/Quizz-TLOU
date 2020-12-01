@@ -1,7 +1,4 @@
-import React, { Component, useState, useContext } from 'react';
-import Firebase, { FirebaseContext } from './Firebase';
-import { Col, Container, Row } from 'react-bootstrap';
-import claqueur from './images/claqueur.png';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 export default function Questions() {
@@ -38,7 +35,7 @@ export default function Questions() {
       question: "Quel objet Ellie dérobe-t'elle afin de le donner à Sam ?",
       answerOptions: [
       { text: 'Une BD "Savage Starlight', correct: false},
-      { text: 'Une balle de Baseball dédicassée', correct: false},
+      { text: 'Une balle de Baseball', correct: false},
       { text: 'Un poster', correct: false},
       { text: 'Un robot', correct: true}
        ]
@@ -63,30 +60,32 @@ export default function Questions() {
 
   const [username, setUsername] = useState('');
  
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+
 
 
  
-
-  
-
-   const saveHighScore = () => {
-
   // username.addEventListener("keyup", () => {
   //     saveScoreBtn.disabled = !username.value;
   //   })
 
-   const result = {
-    score : score,
-    username : username
-  };
+   
+  
 
-   setUsername('')
-   highScores.push(result);
-   localStorage.setItem("highScores", JSON.stringify(highScores));
-   window.location.assign('/');
-   console.log(highScores);
+   const saveHighScore = () => {
  
+    const result = {
+      score : score,
+      username : username
+
+  };
+  
+      setUsername('')
+      highScores.push(result);
+      console.log(highScores);
+      localStorage.setItem("highScores", JSON.stringify(highScores));
+      window.location.assign('/');
   }
 
 
@@ -115,12 +114,13 @@ export default function Questions() {
   {showScore ? (
     <>
         <div className='score-box'>
-        <h1>Vous avez {score} bonne réponse sur {questions.length}</h1>
-          <p>Voulez-vous enregistrer votre score ?</p>
+         <h1>Vous avez {score} bonne réponse sur {questions.length}</h1>
+         <p>Voulez-vous enregistrer votre score ?</p>
           <form>
-          <input type="text" onChange={(e) => setUsername(e.target.value)} name="username" id="username" value={username} className="Btn" placeholder="pseudo" required />
-          <button className="Btn" type="submit" id="saveScoreBtn" onClick={() => saveHighScore()}>Sauvegarder</button>
-        </form>
+            <input type="text" onChange={(e) => setUsername(e.target.value)} name="username" id="username" value={username} placeholder="pseudo" required />
+            <button style={{marginTop: "115px"}} className="Btn" onClick={() => saveHighScore()}>Sauvegarder</button>
+            <Link to="/"><button style={{marginTop: "180px"}} className="Btn">Retour au menu</button></Link>
+          </form>
         </div>
 
         {/* <div className="claqueurdiv">

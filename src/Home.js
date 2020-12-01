@@ -43,13 +43,9 @@ function Home() {
 
 <div style={{ position: "absolute", bottom: "0", marginBottom: "100px"}}>
 <Link to="/Scores"><button variant="primary"  className="menuBtn fade-in">Classement</button></Link>
-{isConnected ? <Link to="/Questions"><button variant="primary" className="menuBtn fade-in">Commencer</button></Link> : 
-<Link to="/Questions">
-      <ReactToolTip
-      place="top"
-      effect="solid"
-      border="true"
-      />
+{isConnected ? <Link to="/Questions"><button variant="primary" className="menuBtn fade-in">Commencer</button></Link> 
+:
+<Link to="/Questions"><ReactToolTip place="top" effect="solid" border="true"/>
 <button variant="primary" className="menuBtn fade-in disabled" data-tip="Connectez-vous pour jouer" disabled>Commencer</button></Link> }
 <Link to="/Rules"><button variant="primary" className="menuBtn fade-in">Voir les règles</button></Link>
 </div>

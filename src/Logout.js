@@ -10,8 +10,6 @@ const Logout = (props) => {
 
     const [checked, setChecked] = useState(false);
 
-    console.log(checked);
-
     useEffect(() => {
         if (checked) {
             console.log('déco');
