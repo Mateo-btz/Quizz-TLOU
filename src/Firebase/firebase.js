@@ -1,9 +1,9 @@
-import app from 'firebase/app';
+import firebase from "firebase/app";
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
 
-const config = {
+const firebaseConfig = {
     apiKey: "AIzaSyCeXLdLSHU55T9c-yzB-ySXeopg_Hn-66E",
     authDomain: "quiz-app-tlou.firebaseapp.com",
     databaseURL: "https://quiz-app-tlou.firebaseio.com",
@@ -13,30 +13,16 @@ const config = {
     appId: "1:869503758350:web:85272f8a40667f0b424c5f"
   };
 
+  firebase.initializeApp(firebaseConfig);
+  
 class Firebase {
-    constructor() {
-        app.initializeApp(config);
-        this.auth = app.auth();
-        this.db = app.firestore();
-        this.storage = app.storage();
-
-    }
-
-    
-    //inscription
-    signupUser = (email,  password) =>
-    this.auth.createUserWithEmailAndPassword(email, password)
-
-    //connexion
-    loginUser = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password)
-
-    //deconnexion
-    signoutUser = () => this.auth.signOut();
-
-    user = uid => this.db.doc(`users/${uid}`);
-
-
+  constructor() {
+      
+      this.auth = firebase.auth();
+      this.db = firebase.firestore();
+      this.storage = firebase.storage();
+  }
+ user = uid => this.db.doc(`users/${uid}`);
 }
 
-export default Firebase ;
+export default Firebase;
