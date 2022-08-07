@@ -32,7 +32,11 @@
 }
 /* FONT-STYLE */
 
-* { margin:0; padding:0; box-sizing:border-box; }
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
 
 :root {
   --hue-neutral: white;
@@ -372,7 +376,7 @@ nav {
 .profil-box {
   display: flex;
   justify-content: flex-end;
-  background-image: url("images/profil-bg.jpg");
+  background-image: url("./Assets/images/profil-bg.jpg");
   background-size: cover;
   border: 2px white solid;
   position: relative;
