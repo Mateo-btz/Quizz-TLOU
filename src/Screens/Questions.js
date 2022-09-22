@@ -4,7 +4,7 @@ import { FirebaseContext } from '../Firebase';
 import 'firebase/auth';
 import app from 'firebase/app';
 
-export default function Questions() {
+export default function Questions(props) {
 
    const questions = [
     {
@@ -115,10 +115,12 @@ export default function Questions() {
     firebase.auth.onAuthStateChanged(function(user) {
       firebase.db.collection('users').doc(user.uid).update({
         points: points
-      });
+      })
+      .then(() => {
+      props.history.push("/");
+  })
     })
-
-  }
+}
 
 
   const AnswerButtonClick = (correct) => {
