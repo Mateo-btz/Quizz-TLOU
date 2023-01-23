@@ -17,6 +17,7 @@
     "react-scripts": "3.4.3",
     "react-tooltip": "^4.2.10",
     "react-transition-group": "^4.4.1",
+    "reactjs-popup": "^2.0.5",
     "use-sound": "^1.0.2"
   },
   "scripts": {
