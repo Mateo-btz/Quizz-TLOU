@@ -1,0 +1,40 @@
+.popup {
+    display: flex;
+    height: 50px;
+    padding: 10px;
+    opacity: 0;
+    -webkit-animation: fadeinout 4s backwards;
+    animation: fadeinout 4s linear backwards;
+}
+
+.red-popup {
+    background-color: red;
+}
+
+.green-popup {
+    background-color: green;
+}
+.popup svg {
+    font-size: 32px;
+}
+
+.popup-text {
+    color: white;
+    font-size: 24px;
+    padding-left: 15px;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+  
+  @keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+
+
+
+
