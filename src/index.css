@@ -1,36 +1,7 @@
+/* FONT-STYLE */
+
 @import url(//db.onlinewebfonts.com/c/d0a687dd2a0803f486cde808245bd3c5?family=Press+Gothic);
 @font-face {font-family: "Press Gothic"; src: url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.eot"); src: url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.woff") format("woff"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/d0a687dd2a0803f486cde808245bd3c5.svg#Press Gothic") format("svg"); }
-
-/* TRANSITION GROUP */
-/*
-.page {
-  position: relative;
-  top: 100px;
-  left: 0;
-  right: 0;
-}
-
-.fade-appear,
-.fade-enter {
-  opacity: 0;
-  z-index: 1;
-}
-
-.fade-appear-active,
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms linear 150ms;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-  opacity: 0;
-  transition: opacity 150ms linear;
-}
-/* FONT-STYLE */
 
 * { 
   margin: 0; 
@@ -47,7 +18,6 @@
 .error {
   color: red;
 }
-
 
 button {
   font-family: 'Segoe UI'!important;
@@ -80,7 +50,7 @@ code {
     monospace;
 }
 
-h1, h2, div {
+h1, h2, h3, div {
   color: white!important;
   text-align: center;
 }
@@ -91,7 +61,6 @@ h1, h2, div {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 35px;
   width: 40%;
 }
 
@@ -100,13 +69,18 @@ h1, h2, div {
   right: 0;
 }
 
+#avatar-nav {
+  height: 43px;
+  border-radius: 45%;
+  width: 41px;
+}
+
 #alert {
   position: relative;
   top: 0;
 }
 
 .avatars {
-
   margin: 5px;
   cursor: pointer;
   border-radius: 15px;
@@ -119,7 +93,6 @@ h1, h2, div {
 form {
   height: 300px;
 }
-
 
 /* AUDIO ET VIDEOS */
 
@@ -188,7 +161,6 @@ video#bgvid {
   color: white;
   transition: 0.4s;
   width: 45%;
-  border-radius: 8px;
   margin-top: 25px;
   
 }
@@ -199,13 +171,7 @@ video#bgvid {
 }
 
 @media (min-width: 500px) {
-
-nav {
-  left: 0;
-}    
-#mobile-goHomeBtn {
-   display: none;
-}
+   
 .logout-box-mobile {
   display: none;
 }
@@ -225,7 +191,6 @@ nav {
   align-items: center;
   background-color: transparent;
   border: 1px white solid;
-  border-radius: 8px;
   height: 50px;
   width:  200px;
   color: white;
@@ -244,21 +209,19 @@ nav {
 .Btn {
   background-color: transparent;
   border: 1px white solid!important;
-  border-radius: 8px;
   height: 50px;
   width:  200px;
   color: white;
   transition: 0.4s;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 .Btn:hover {
   color: black;
   background-color: white;
+}
+
+.btn-submit {
+  width: 275px;
 }
 
 .goHomeBtn {
@@ -274,13 +237,9 @@ nav {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   margin-top: 55px;
-
 }
+
 .loginBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-left: 0;
   width: 150px;
   margin: 10px;
   background-color: transparent;
@@ -288,7 +247,6 @@ nav {
   border: 1px white solid;
   margin-top: 8px;
   min-height: 30px;
-  border-radius: 10px;
   transition: 0.4s;
 }
 
@@ -314,7 +272,13 @@ nav {
 #menuBtn-box {
   display: flex;
   justify-content: center;
+}
 
+.rules-container {
+  margin-top: 15%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .score-box {
@@ -326,24 +290,27 @@ nav {
   top: 200px;
 }
 
+.questions-container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .question-box {
   border: 3px solid white;
-  margin-top: 200px;
   height: 150px;
-  border-radius: 8px;
 }
 
 .login-box {
-
   position: relative;
-  top: 80px;
+  top: 20px;
   border-right: 1px solid rgba(224, 218, 218, 0.103);
-
 }
 
-
-
-.login-box input  {
+.login-box input {
   height: 50px;
   width: 275px;
   margin: 5px;
@@ -354,13 +321,9 @@ nav {
   border-right: none;
   border-left: none;
   padding-left: 5px;
-  position: relative;
-  top: 40px;
-  
 }
 
 .score-box input {
-
   height: 40px;
   width: 250px;
   background: transparent;
@@ -369,8 +332,6 @@ nav {
   border-top: none;
   border-right: none;
   border-left: none;
-  
-
 }
 
 .profil-box {
@@ -400,12 +361,10 @@ nav {
 nav {
   position: fixed;
   top: 0;
-
-
+  left: 15px;
 }
 .rulestext {
   text-align: center;
-  padding-top: 5%;
 }
 
 /* TABLES */
@@ -423,8 +382,6 @@ table {
   width: 55%!important;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
-  top: 50px;
 }
 
 .signin {
@@ -434,35 +391,39 @@ table {
 .container {
   margin-right: auto;
   margin-left: auto;
+  margin-top: 4%;
 }
 
-#imgjoel {
-  position: absolute;
-  height: 450px;
-  right: -180px;
-  top: -50px;
+#nav-container {
+  position: relative;
 }
 
 #imgellie {
-  position: absolute;
-  height: 400px;
-  right: 140px;
+  height: 330px;
 }
 
 /* MOBILE FIRST */
 
 @media (max-width: 500px) {
-
-
-    
+ 
+  #imgjoel {
+    position: relative;
+    top: 140px;
+  }
+  #login-container ~ h2 {
+    margin-top: 45px!important;
+  }
   #logo {
     width: 100%;
     height: auto;
   }
+  form {
+    height: 230px;
+  }
   #mute {
     display: none;
   }
-  #imgjoel, #imgellie {
+  #joeldiv, #elliediv {
     display: none;
   }
   .hometitle {
@@ -472,20 +433,29 @@ table {
     display: none;
     
   }
+  
+  .rules-container {
+    width: 90%;
+  }
+
+  #menuBtn-box {
+    flex-direction: column;
+  }
+
+  #menuBtn-box a {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .menuBtn {
     display: block;
     position: relative;
     float: none !important;
     left: auto;
     position: relative;
-    padding: 0;
-    
+    padding: 0;  
+    margin: 10px; 
   }
-  #avatarNav {
-    float: right;
-    border: 1px black solid;
-  }
-
+  
   #login-container {
     display: flex;
     justify-content: center;
@@ -495,20 +465,14 @@ table {
     display: none;
   }
 
-  #rules-container {
-     position: relative;
-     top: 50%;
-     bottom: 50%;
-  }
-
   .rulestext {
     font-size: 20px;
-    padding-top: 50px;
   }
 
   #nav-container {
     display: flex;
     justify-content: flex-start;
+    padding: 15px;
   }
 
   #goHomeBtn {
@@ -519,7 +483,12 @@ table {
     background: transparent;
     width: 90%;
     display: flex;
+    border: none;
+  }
 
+  .react-switch-label {
+    display: inline-block!important;
+    margin-top: 15px;
   }
 
   .profil-container {
@@ -546,10 +515,6 @@ table {
     margin: 5px;
     width: 45%;
 
-  }
-  .deco-mobile {
-    float: left;
-    position: absolute;
   }
   .ant-avatar .ant-avatar-circle .ant-avatar-icon {
     float: right;
