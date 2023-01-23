@@ -11,6 +11,7 @@ export default function Questions(props) {
 
    const questions = [
     {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question1.jpg',
       question: "Quel age a Ellie la première fois qu'elle rencontre Joel ?",
       answerOptions: [
           { text: '13', correct: false},
@@ -20,6 +21,7 @@ export default function Questions(props) {
       ]
   },
   {
+     image: process.env.PUBLIC_URL + '/img/Questionsimg/question2.jpg',
      question: "Comment s'appelle la cheffe des Lucioles ?",
      answerOptions: [
       { text: 'Marie', correct: false},
@@ -30,6 +32,7 @@ export default function Questions(props) {
      ]
   },
   {
+     image: process.env.PUBLIC_URL + '/img/Questionsimg/question3.jpg',
       question: "Quel est le nom de famille de Joel ?",
       answerOptions: [
       { text: 'Miller', correct: true},
@@ -39,6 +42,7 @@ export default function Questions(props) {
        ]
   },
   {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question4.jpg',
       question: "Quel objet Ellie dérobe-t'elle afin de le donner à Sam ?",
       answerOptions: [
       { text: 'Une BD "Savage Starlight', correct: false},
@@ -48,6 +52,7 @@ export default function Questions(props) {
        ]
   },
   {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question5.jpg',
       question: "Qu'est ce qu'Ellie va troquer avec David contre des médicaments ?",
       answerOptions: [
       { text: 'Un lapin', correct: false},
@@ -57,6 +62,7 @@ export default function Questions(props) {
        ]
     },
     {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question6.jpg',
       question: "Qui est le petit ami d'Abby ?",
       answerOptions: [
       { text: 'Owen', correct: true},
@@ -66,6 +72,7 @@ export default function Questions(props) {
        ]
     },
     {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question7.jpg',
       question: "Pourquoi Lev est-il banni du clan des séraphites ?",
       answerOptions: [
       { text: "Lev est homosexuel", correct: false},
@@ -75,6 +82,7 @@ export default function Questions(props) {
        ]
     },
     {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question8.jpg',
       question: "Ou se trouve le lieu du combat final entre Ellie et Abby ?",
       answerOptions: [
       { text: 'Eastbrook', correct: false},
@@ -84,6 +92,7 @@ export default function Questions(props) {
        ]
     },
     {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question9.jpg',
       question: "Dans quelle partie du corps d'Ellie se trouve le remède de l'humanité ?",
       answerOptions: [
       { text: 'Il circule dans son sang', correct: false},
@@ -93,6 +102,7 @@ export default function Questions(props) {
        ]
     },
     {
+      image: process.env.PUBLIC_URL + '/img/Questionsimg/question10.jpg',
       question: "Avec qui Joel a failli se battre lors de la fête à Jackson ?",
       answerOptions: [
       { text: 'Jesse', correct: false},
@@ -165,6 +175,10 @@ export default function Questions(props) {
     </>
     ) : (
     <>
+      <div className="question-box">
+        <p class="question-counter">Question {currentQuestion}/{questions.length}</p>
+        <img src={questions[currentQuestion].image} class="question-img" alt="question image"></img>
+      </div>
       {isGreenPopupOpen ? (
         <GreenPopup isOpen={isGreenPopupOpen} setIsOpen={setIsGreenPopupOpen} />
       ) : (
@@ -175,10 +189,7 @@ export default function Questions(props) {
       ) : (
         null
       )}
-      <div className="question-box">
-        <h2>Question {currentQuestion}/{questions.length}</h2>
-        <h2>{questions[currentQuestion].question}</h2>
-      </div>
+      <h2 class="question-text">{questions[currentQuestion].question}</h2>
       <div className="answer-box">
         {questions[currentQuestion].answerOptions.map((answerOption) =>(
         <button className="answerbtn" id="answerbtn" onClick={() => AnswerButtonClick(answerOption.correct)}>{answerOption.text}</button>
