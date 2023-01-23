@@ -38,7 +38,6 @@ const Logout = (props) => {
       <ReactToolTip
       place="left"
       effect="solid"
-      border="true"
        />
       </>
       

@@ -12,7 +12,7 @@ function Music() {
 
     return (
         <div>
-            <video autoPlay loop poster="assets/videos/loadingscreen.jpg" id="bgvid" src={bgVideo}></video>
+            <video muted={true} autoPlay loop poster="assets/videos/loadingscreen.mp4" id="bgvid" src={bgVideo} ></video>
             <audio loop autoPlay src={music} id="music"></audio>
         </div>      
     )
