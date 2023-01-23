@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { FirebaseContext } from '../Firebase';
 import 'firebase/auth';
+import GreenPopup from '../Components/GreenPopup';
+import RedPopup from '../Components/RedPopup';
+import claqueur from '../Assets/images/claqueur.png';
 import app from 'firebase/app';
 
 export default function Questions(props) {
@@ -104,35 +107,38 @@ export default function Questions(props) {
   const [showScore, setShowScore] = useState(false);
   var [points, setPoints] = useState(0);
   const firebase = useContext(FirebaseContext);
-  
+  const [isGreenPopupOpen, setIsGreenPopupOpen] = useState(false);
+  const [isRedPopupOpen, setIsRedPopupOpen] = useState(false);
 
-  // username.addEventListener("keyup", () => {
-  //     saveScoreBtn.disabled = !username.value;
-  //   })
-  
+  // Trigger quand on sauvegarde le score
   const handleSubmit = e => {
     e.preventDefault();
+
+    // TODO: VERIFIER SI LE CURRENT SCORE EST PLUS HAUT
+
+    // INSERTION DU NOUVEAU SCORE
     firebase.auth.onAuthStateChanged(function(user) {
       firebase.db.collection('users').doc(user.uid).update({
         points: points
       })
       .then(() => {
       props.history.push("/");
-  })
+      })
     })
-}
+  }
 
-
+  // Incrémente les points et affiche les popups
   const AnswerButtonClick = (correct) => {
     if(correct===true){
       setPoints(points + 1);
-      console.log(points);
-      alert('Bonne réponse !');
+      setIsGreenPopupOpen(true);
+      setIsRedPopupOpen(false);
       } else {
-        alert('Mauvaise réponse !');
+      setIsRedPopupOpen(true);
+      setIsGreenPopupOpen(false);
       }
 
-
+  // Display les questions
   const nextQuestion = currentQuestion + 1;
       if(nextQuestion < questions.length) {
         setCurrentQuestion(nextQuestion);
@@ -141,40 +147,44 @@ export default function Questions(props) {
       }
   }
   
-    return(
-            
-<div className="container">
-
-  {showScore ? (
+  return(          
+  <div className="container questions-container">
+    {showScore ? (
     <>
-        <div className='score-box'>
-         <h1>Vous avez {points} bonne réponse sur {questions.length}</h1>
-         <p>Voulez-vous enregistrer votre score ?</p>
-          <form onSubmit={handleSubmit}>
-            <button style={{marginTop: "115px"}} className="Btn">Sauvegarder</button>
-            <Link to="/"><button style={{marginTop: "180px"}} className="Btn">Retour au menu</button></Link>
-          </form>
+      <div className='score-box'>
+        <div className="claqueurdiv">
+          <img src={claqueur} alt="claqueur" id="imgclaqueur"></img>
         </div>
-
-        {/* <div className="claqueurdiv">
-        <img src={claqueur} alt="claqueur" id="imgclaqueur"></img>
-        </div> */}
+        <h1>Vous avez {points} bonne réponse sur {questions.length}</h1>
+        <p>Voulez-vous enregistrer votre score ?</p>
+        <form onSubmit={handleSubmit}>
+          <button className="Btn">Sauvegarder</button>
+          <Link to="/"><button className="Btn">Retour au menu</button></Link>
+        </form>
+      </div>
     </>
-
-  ) : (
-  <>
-  <div className="question-box">
-      <h2>Question {currentQuestion}/{questions.length}</h2>
-      <h2>{questions[currentQuestion].question}</h2>
+    ) : (
+    <>
+      {isGreenPopupOpen ? (
+        <GreenPopup isOpen={isGreenPopupOpen} setIsOpen={setIsGreenPopupOpen} />
+      ) : (
+        null
+      )}
+        {isRedPopupOpen ? (
+        <RedPopup isOpen={isRedPopupOpen} setIsOpen={setIsRedPopupOpen} />
+      ) : (
+        null
+      )}
+      <div className="question-box">
+        <h2>Question {currentQuestion}/{questions.length}</h2>
+        <h2>{questions[currentQuestion].question}</h2>
+      </div>
+      <div className="answer-box">
+        {questions[currentQuestion].answerOptions.map((answerOption) =>(
+        <button className="answerbtn" id="answerbtn" onClick={() => AnswerButtonClick(answerOption.correct)}>{answerOption.text}</button>
+        ))}
+      </div>
+    </>              
+    )}
   </div>
-  <div className="answer-box">
-  {questions[currentQuestion].answerOptions.map((answerOption) =>(
-  <button className="answerbtn" id="answerbtn" onClick={() => AnswerButtonClick(answerOption.correct)}>{answerOption.text}</button>
-  ))}
-  </div>
-  </>              
-  )}
-</div>
-  )
- 
-} 
+  )} 

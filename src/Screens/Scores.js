@@ -14,37 +14,37 @@ function Scores() {
   firebase.db.collection("users")
   .orderBy('points', 'desc')
   .onSnapshot(docs => {
-  let users = [];
-  docs.forEach(doc => {
+    let users = [];
+    docs.forEach(doc => {
     users.push(doc.data())
   })
   setUsers(users);
   })
-    return(
 
+  return(
     <>
-          <table className="table table-striped hide" id="table"> 
-          <>
-            <thead className="text-black bg-white">
-                <tr>
-                  <th>Classement</th>
-                  <th>Pseudo</th>
-                  <th>Score</th>
-                </tr>
-            </thead>
-              <tbody>
+      <table className="table table-striped hide" id="table"> 
+        <>
+          <thead className="text-black bg-white">
+              <tr>
+                <th>Classement</th>
+                <th>Pseudo</th>
+                <th>Score</th>
+              </tr>
+          </thead>
+          <tbody>
             {allUsers.map(user =>
-                <tr>
-                  <td>{i++}</td>
-                  <td>{user.pseudo}</td>
-                  <td>{user.points}</td> 
-                </tr>
-              )}
-            </tbody> 
-            <Link to="/"><button style={{marginTop: "400px"}} variant="primary" className="Btn">Retour</button></Link>
-          </>
-          </table>
-          </>
+              <tr>
+                <td>{i++}</td>
+                <td>{user.pseudo}</td>
+                <td>{user.points}</td> 
+              </tr>
+            )}
+          </tbody> 
+        </>
+      </table>
+      <Link to="/"><button variant="primary" className="Btn">Retour</button></Link>
+    </>
 
 
     )

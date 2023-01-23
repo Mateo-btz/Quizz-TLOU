@@ -2,17 +2,16 @@ import React, {useState, useEffect, useContext} from 'react';
 import ellie from '../Assets/images/ellie.png';
 import { Col, Container, Row } from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import FirebaseContext from '../Firebase/context';
+
 
   function Connexion(props) {
 
     const [email, setEmail] = useState('');
-
     const [password, setPassword] = useState('');
-
     const [btn, setBtn] = useState(false);
-
     const [error, setError] = useState('')
-
+    const firebase = useContext(FirebaseContext);
 
     useEffect(() => {
 
@@ -26,51 +25,51 @@ import {Link} from "react-router-dom";
 
     const handleSubmit = e => {
       e.preventDefault();
-
-      // firebase.loginUser(email, password)
-      // .then(user => {
-      //   console.log(user);
-      //   setEmail('');
-      //   setPassword('');
-      //      props.history.push("/Profil");
-      //     })
-      //   .catch(error => {
-      //     setError(error);
-      //     setEmail('');
-      //     setPassword('');
-      // })
-      
+      firebase.auth.signInWithEmailAndPassword(email, password)
+      .then(user => {
+        console.log(user);
+        setEmail('');
+        setPassword('');
+           props.history.push("/Profil");
+          })
+        .catch(error => {
+          setError(error);
+          setEmail('');
+          setPassword('');
+      })
     }
-
-
-
       return(
           <>
-          <h2 style={{paddingTop: "100px"}}>Connectez-vous</h2>
-          <Container id="login-container">
-            <Row>
+            <Container>
+              <h2>Connectez-vous</h2>
+            </Container>
+            <Container id="login-container">
+              <Row>
+                  <Col>
+                    {error !== '' && <span className="error">{error.message}</span>}
+                    <div className="login-box">
+                      <form onSubmit={handleSubmit}>
+                        <label>
+                          <input onChange={e => setEmail(e.target.value)}  value={email} type="text" placeholder="Email" required></input>
+                        </label>
+                        <label>
+                          <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder="mot de passe" required></input>
+                        </label>
+                        {btn ? <button className="Btn btn-submit" type="submit">Connexion</button> : <button className="Btn btn-submit disabled" disabled>Connexion</button>}
+                      </form>
+                    </div>
+                  </Col>
                 <Col>
-                {error !== '' && <span className="error">{error.message}</span>}
-                  <div className="login-box">
-                    <form onSubmit={handleSubmit}>
-                      <input onChange={e => setEmail(e.target.value)}  value={email} type="text" placeholder="Email" required></input>
-                      <br></br>
-                      <input onChange={e => setPassword(e.target.value)} value={password} type="password"  placeholder="mot de passe" required></input>
-                      {btn ? <button className="Btn" type="submit" style={{marginTop: "100px", width: "250px"}}>Connexion</button> : <button className="Btn disabled" style={{marginTop: "100px", width: "250px"}} disabled>Connexion</button>}
-                      <Link to="/"><button className="Btn" id="mobile-goHomeBtn" style={{marginTop: "160px", width: "240px", position: "absolute"}}>Retour au menu</button></Link> {/* SE DISPLAY EN VERSION MOBILE*/}
-                    </form>
+                  <div className="joeldiv">
+                    <img src={ellie} alt="ellie" id="imgellie"></img>
                   </div>
                 </Col>
-              <Col>
-                <div className="joeldiv">
-                  <img src={ellie} alt="ellie" id="imgellie"></img>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-          <Link to="/"><button className="Btn" id="goHomeBtn" style={{marginTop: "262px", width: "250px"}}>Retour au menu</button></Link> {/* SE DISPLAY EN VERSION DESKTOP*/}
+              </Row>
+            </Container>
+            <Container>
+              <Link to="/"><button className="Btn" id="goHomeBtn">Retour au menu</button></Link>
+            </Container>
           </>
-      )
-  }
+        )}
 
 export default Connexion;

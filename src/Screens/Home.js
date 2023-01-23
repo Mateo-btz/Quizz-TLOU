@@ -1,17 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from '../Assets/images/logo.jpg';
 import {Link} from "react-router-dom";
 import ReactToolTip from 'react-tooltip';
 import { Container} from 'react-bootstrap';
 import app from 'firebase/app';
-import playAudio from '../Components/ClickSound';
+// import playAudio from '../Components/ClickSound';
 require ('firebase/auth');
 
 function Home() {
 
   const [isConnected, setIsConnected] = useState(false);
+  useEffect(() => {
+    ReactToolTip.rebuild();
+  });
 
-   app.auth().onAuthStateChanged(function(user) {
+  app.auth().onAuthStateChanged(function(user) {
       if (user) {
       setIsConnected(true);
     } else {
@@ -29,14 +32,12 @@ return(
     </header>
   </Container>
   <Container id="menuBtn-box">
-    <div style={{ position: "absolute", bottom: "0", marginBottom: "100px"}}>
       <Link to="/Scores"><button variant="primary"  className="menuBtn fade-in">Classement</button></Link>
       {isConnected ? <Link to="/Questions"><button variant="primary" className="menuBtn fade-in">Commencer</button></Link> 
       :
-      <Link to="/Questions"><ReactToolTip place="top" effect="solid" border="true"/>
-      <button variant="primary" className="menuBtn fade-in disabled" data-tip="Connectez-vous pour jouer"  onClick={playAudio.playAudio} disabled>Commencer</button></Link> }
-      <Link to="/Rules"><button variant="primary" className="menuBtn fade-in" onClick={() => playAudio.playAudio}>Voir les règles</button></Link>
-    </div>
+      <Link to="/Questions"><ReactToolTip place="top" effect="solid"/>
+      <button variant="primary" className="menuBtn fade-in disabled" data-tip="Connectez-vous pour jouer" disabled>Commencer</button></Link> }
+      <Link to="/Rules"><button variant="primary" className="menuBtn fade-in">Voir les règles</button></Link>
   </Container>
 </>
 )}
